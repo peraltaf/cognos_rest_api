@@ -19,6 +19,7 @@ API_PASS=my_password
 NAMESPACE=my_namespace
 ```
 
+### Running as a standalone script
 Instantiate a new CognosAPI object 
 ```javascript
 const { CognosAPI } = require('./api.js');
@@ -35,4 +36,16 @@ const test = async () => {
 }
 
 test();
+```
+
+### Running as a simple REST API
+Start the server
+```javascript
+npm run start
+```
+
+Access the below endpoints.
+```
+http://localhost:3000/get_reports?folder_id=<folder_id>
+http://localhost:3000/get_permissions?folder_id=<object_id>
 ```
