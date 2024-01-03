@@ -1,6 +1,4 @@
 const https = require('https');
-require('dotenv').config();
-
 
 const httpsAgent = new https.Agent({
   rejectUnauthorized: false,
@@ -81,7 +79,6 @@ class CognosAPI {
       // this.#throwError(e);
     }
   }
-
 
   async #traverseDir(store_id, curr_path='', out=[])  {
     let contents = await this.#get(`/content/${store_id}/items`);
