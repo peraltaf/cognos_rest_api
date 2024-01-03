@@ -149,16 +149,4 @@ class CognosAPI {
   }
 }
 
-
-
-
-const test = async () => {
-  let ca = new CognosAPI(process.env.API_URL);
-  await ca.login(process.env.API_USER, process.env.API_PASS, process.env.NAMESPACE);
-  console.dir(await ca.get_permissions('i0EACCD301EC148CC9021E2121F10320C'), { depth: null });
-  // Power Enterprise folder i7D30D98367D34FB09578323289629B0A
-  // Power Enterprise -> CCA -> CPSF Annual Sum of Consumptions i0EACCD301EC148CC9021E2121F10320C
-  // Power Enterprise -> SCADA -> Hetch Hetchy SCADA Data for Ascend Models iE5EE2DE537654B22A386CC759B87A564
-}
-
-test();
+module.exports = { CognosAPI }
