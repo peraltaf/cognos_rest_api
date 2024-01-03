@@ -47,5 +47,5 @@ npm run start
 Access the below endpoints.
 ```
 http://localhost:3000/get_reports?folder_id=<folder_id>
-http://localhost:3000/get_permissions?folder_id=<object_id>
+http://localhost:3000/get_permissions?object_id=<object_id>
 ```
