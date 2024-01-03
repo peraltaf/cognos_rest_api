@@ -15,9 +15,13 @@ CA.login(process.env.API_USER, process.env.API_PASS, process.env.NAMESPACE);
 console.log(`Logged in to Cognos Analytics as ${process.env.API_USER}`);
 /****************** TODO ******************/
 /* Logic to re-login when session expires */
+/* Better error handling ******************/
 /******************************************/
 
 app.get('/get_reports', async (req, res) => {
+  if (!req.query.hasOwnProperty('folder_id') || req.query.folder_id.length === 0)
+    return res.send('You must specify an folder_id parameter');
+
   try {
     const data = await CA.get_reports(req.query.folder_id);
     res.send(data);
@@ -28,8 +32,11 @@ app.get('/get_reports', async (req, res) => {
 
 
 app.get('/get_permissions', async (req, res) => {
+  if (!req.query.hasOwnProperty('object_id') || req.query.object_id.length === 0)
+    return res.send('You must specify an object_id parameter');
+
   try {
-    const permissions = await CA.get_permissions(req.query.folder_id);
+    const permissions = await CA.get_permissions(req.query.object_id);
     res.send(permissions);
   } catch (e) {
     res.sendStatus(e);
