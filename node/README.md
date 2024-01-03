@@ -21,6 +21,8 @@ NAMESPACE=my_namespace
 
 Instantiate a new CognosAPI object 
 ```javascript
+const { CognosAPI } = require('./api.js');
+
 const test = async () => {
   let ca = new CognosAPI(process.env.API_URL);
   await ca.login(process.env.API_USER, process.env.API_PASS, process.env.NAMESPACE);
