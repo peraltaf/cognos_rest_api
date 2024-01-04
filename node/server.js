@@ -7,7 +7,6 @@ const app = express ();
 const PORT = 3000;
 
 app.use(express.json());
-process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = 0; // MUST BE REMOVED FOR PRODUCTION
 
 const CA = new CognosAPI(process.env.API_URL);
 console.log('Logging in to Cognos Analytics');
