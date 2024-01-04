@@ -1,5 +1,6 @@
 const https = require('https');
 
+
 const httpsAgent = new https.Agent({
   rejectUnauthorized: false,
 });
@@ -22,11 +23,14 @@ class CognosAPI {
       'headers': this.#headers,
       'credentials': 'same-origin'
     }
+
     if (!this.ssl_verify) {
       payload.agent = httpsAgent;
       process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
     }
+    
     if (data) payload.body = JSON.stringify(data);
+    
     try {
       return await fetch(api_url, payload)
       .then(resp => {        
@@ -76,7 +80,6 @@ class CognosAPI {
       this.#headers['IBM-BA-Authorization'] = await response[0].session_key;
     } catch (e) {
       throw `Could not log in into CA as ${user} in namespace ${namespace}.`;
-      // this.#throwError(e);
     }
   }
 
@@ -132,7 +135,6 @@ class CognosAPI {
         
     return groups;
   }
-      
 
   async get_permissions(object_id) {
     let groups = await this.#getGroupMembers();
